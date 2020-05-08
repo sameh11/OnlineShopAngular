@@ -1,0 +1,43 @@
+<div class="shop_sidebar_area">
+
+  <div class="widget catagory mb-50">
+    <div class="nav-side-menu">
+      <label for="search_term"><h6 class="mb-0">Search<span>*</span></h6></label>
+      <input type="text" class="form-control" id="search_term" [(ngModel)]="_searchTerm" value=""
+             (keyup)="searchByTerm()">
+    </div>
+  </div>
+
+  <div class="widget catagory mb-50">
+    <!--  Side Nav  -->
+    <div class="nav-side-menu">
+      <h6 class="mb-0">Catagories</h6>
+      <div class="menu-list" *ngIf="CategoryList">
+        <ul id="menu-content2" class="menu-content collapse out" *ngFor="let categoryitem of CategoryList"
+            [class.active]="false" [title]="IsSelected"
+            (click)="searchByCategory(categoryitem, IsSelected)">
+          <!-- Single Item -->
+          <li [ngClass]="IsSelected ? '' : 'collapsed' "><a>{{categoryitem}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!--  TODO Fix Filter by price rang -->
+  <div class="widget price mb-50">
+    <div class="nav-side-menu">
+      <h6 class="mb-30">Filter by Price</h6>
+      <div class="widget-desc">
+        <div class="nav-side-menu">
+          <h6 class="widget-title mb-2">Minimum Price</h6>
+          <input type="number" class="form-control" [(ngModel)]="minSliderPrice" value=""
+                 (keyup)="searchByTerm()" [placeholder]="minSliderPrice">
+          <h6 class="widget-title mb-2 mt-2">Maximum Price</h6>
+          <input type="number" class="form-control" [(ngModel)]="maxSliderPrice" value=""
+                 (keyup)="searchByTerm()" [placeholder]="maxSliderPrice">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,20 @@
+
+
+<section class="shop_grid_area section_padding_100">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg-3">
+        <app-filter [CategoryList]="filteredCategories"
+                    [maxSliderPrice]="maxPrice"
+                    [minSliderPrice]="minPrice"
+                    (productsSearchEmitter)="SetSearch($event)"
+                    (CategoryEmitter)="setCategory($event)"
+        ></app-filter>
+      </div>
+
+      <div class="col-12 col-md-8 col-lg-9" *ngIf="filteredProducts">
+        <app-list [productsToDisplay]="filteredProducts"></app-list>
+      </div>
+    </div>
+  </div>
+</section>

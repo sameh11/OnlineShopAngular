@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate() {
     if (this.userService.isLoggedIn) {
+      // console.log(this.userService.isLoggedIn);
       return true;
     } else {
       this.router.navigate(['login']);
@@ -51,7 +52,7 @@ export class LoginGuard implements CanActivate {
 
   canActivate() {
     if (this.userService.isLoggedIn) {
-      this.router.navigate(['/cart']);
+      this.router.navigate(['/Shop']);
     } else {
       return true;
     }

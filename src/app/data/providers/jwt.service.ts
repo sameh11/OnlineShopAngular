@@ -16,7 +16,8 @@ export class JwtService {
     }
   }
 
-  static get jwtHeader(): HttpHeaders {
+  static get jwtHeader()/*: HttpHeaders*/ {
     return new HttpHeaders({  Authorization : 'Bearer ' + JwtService.jwtToken });
+    // return { headers : { Authorization : `Bearer ${ JSON.parse(localStorage.getItem('currentUser')).token }` } };
   }
 }

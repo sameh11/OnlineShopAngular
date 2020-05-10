@@ -16,11 +16,11 @@
 
 	// Products Slick
   var prdo = document.getElementsByClassName('products-slick');
-  if (prdo) 
+  if (prdo)
 	$('.products-slick').each(function() {
 		var $this = $(this),
 				$nav = $this.attr('data-nav');
-  console.log("$this.slick")
+  // console.log("$this.slick")
 		$this.slick({
 			slidesToShow: 4,
 			slidesToScroll: 1,
@@ -140,10 +140,10 @@
 
 	function updatePriceSlider(elem , value) {
 		if ( elem.hasClass('price-min') ) {
-			console.log('min')
+			// console.log('min')
 			priceSlider.noUiSlider.set([value, null]);
 		} else if ( elem.hasClass('price-max')) {
-			console.log('max')
+			// console.log('max')
 			priceSlider.noUiSlider.set([null, value]);
 		}
 	}

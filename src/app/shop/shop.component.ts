@@ -1,9 +1,8 @@
-import { Component, Input, KeyValueDiffer, KeyValueDiffers, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../data/providers/user.service';
+import { Component, KeyValueDiffer, KeyValueDiffers, OnInit } from '@angular/core';
 import { productService } from '../data/providers/product.service';
 import { AuthRepository } from '../data/repositories/auth.repository';
 import { ProductRespository } from '../data/repositories/product.respository';
-import { IProduct, IUser } from '../data/models';
+import { IProduct } from '../data/models';
 
 @Component({
   selector : 'app-shop',
@@ -14,7 +13,7 @@ export class ShopComponent implements OnInit {
 
   constructor(private productservice: productService,
               private keyValueDiffers: KeyValueDiffers,
-              private productrespository: ProductRespository,
+              private productRespository: ProductRespository,
               private authRepo: AuthRepository) {
   }
 
@@ -26,21 +25,27 @@ export class ShopComponent implements OnInit {
   maxPrice = 0;
   minPrice = 0;
   private differ: KeyValueDiffer<any, any>;
-
-  User: IUser = {
-    _id: 'adf',
-    username : 'heheee1',
-    email : 'heheee1@baba.com',
-    password : '1111'
-  };
-
-  loginUser() {
-    this.authRepo.loginUser(this.User);
-  }
+  product: IProduct;
 
   ngOnInit(): void {
-    this.loginUser();
+    // this.loginUser();
     this.initializeProduct();
+    this.addproduct();
+  }
+
+  addproduct() {
+    this.product = {
+      description : 'asdfdaf',
+      image : 'asdfsda',
+      promotion : 0,
+      status : 'asdffas',
+      name: 'dasf',
+      category: 'asdfsa',
+      price: 9999
+    };
+    if (this.authRepo.isLoggedIn()) {
+    this.productRespository.newProduct(this.product);
+    }
   }
 
   SetSearch(value) {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { productService } from '../providers/product.service';
 import { IProduct } from '../models';
 import 'rxjs/add/operator/map';
+
 @Injectable()
 export class ProductRespository {
   products = new Array<IProduct>();
@@ -47,9 +48,16 @@ export class ProductRespository {
     });
   }
 
-  newProduct(product: IProduct, httpHeaders?: any) {
-    return this.productservice.saveProduct(product, httpHeaders)
-    .subscribe(p => this.products.push(p));
+  newProduct(product: IProduct) {
+    return this.productservice.saveProduct(product)
+    .subscribe(
+      p => {
+        console.log(p);
+        // this.products.push(p);
+      },
+      err => console.log(`repository erro ${ JSON.stringify(err) }`),
+      () => console.log('complete')
+    );
   }
 }
 

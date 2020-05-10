@@ -17,6 +17,7 @@ export interface IUser {
   email: string;
   password: string;
   gender?: string;
+  age?: number;
   image?: string;
   createdAt?: Date;
   deletedAt?: Date;
@@ -36,6 +37,11 @@ export interface IOrder {
 export interface IAuth {
   user: IUser;
   token: string;
+}
+
+export interface IResponseError {
+
+      message: string;
 }
 
 //// TODO add cart interface

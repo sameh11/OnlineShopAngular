@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IResponseError } from '../../data/models';
+import { UserService } from '../../data/providers/user.service';
 import { AuthRepository } from '../../data/repositories/auth.repository';
 
 @Component({
@@ -10,16 +13,24 @@ import { AuthRepository } from '../../data/repositories/auth.repository';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  username: string;
-  password: string;
-  error = { type : String, massege : String };
+  error: IResponseError = null;
 
   constructor(formBuilder: FormBuilder,
-              private authRepository: AuthRepository) {
+              private authRepository: AuthRepository,
+              private auth: UserService,
+              private router: Router) {
     this.loginForm = formBuilder.group({
-      username : new FormControl( '', Validators.required ),
-      password : new FormControl( '', Validators.required )
+      username : new FormControl('', Validators.required),
+      password : new FormControl('', Validators.required)
     });
+  }
+
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
 
   ngOnInit(): void {
@@ -27,10 +38,22 @@ export class LoginComponent implements OnInit {
 
   submitForm() {
     if (this.loginForm.valid) {
-      this.authRepository.loginUser(this.loginForm.value);
-    }
-    else {
-      console.log(console.log('not valid'));
+      this.auth.login({ username : this.username.value, password : this.password.value }).subscribe(
+        (data) => {
+          this.auth.currentUser = data;
+          this.router.navigate(['shop']);
+          window.location.reload();
+        },
+        (error) => {
+          this.error = error.error;
+        },
+        () => {
+          console.log('complete');
+        }
+      )
+      ;
+    } else {
+      console.log('not valid');
     }
   }
 }

@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { IAuth, IUser } from '../models';
+import { IAuth } from '../models';
 
 @Injectable()
 export class UserService {
 
   private rootUrl = environment.rootUrl;
+  private token: string;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -47,9 +48,8 @@ export class UserService {
     return this.http.post<IAuth>(`${ this.rootUrl }users/auth/login`, form);
   }
 
-  register(user: IUser): Observable<IAuth> {
-    return this.http.post<IAuth>(this.rootUrl + 'auth/register',
-      { username : user.username, email : user.email, password : user.password });
+  register(form: any): Observable<IAuth> {
+    return this.http.post<IAuth>(`${ this.rootUrl }users/auth/register`, form);
     // .map((response: Response) => response.json());
   }
 }

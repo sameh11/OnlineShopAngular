@@ -1,4 +1,4 @@
-import { Component, KeyValueDiffer, KeyValueDiffers, OnInit } from '@angular/core';
+import { Component, Input, KeyValueDiffer, KeyValueDiffers, OnInit } from '@angular/core';
 import { productService } from '../data/providers/product.service';
 import { AuthRepository } from '../data/repositories/auth.repository';
 import { ProductRespository } from '../data/repositories/product.respository';
@@ -17,7 +17,7 @@ export class ShopComponent implements OnInit {
               private authRepo: AuthRepository) {
   }
 
-  // @Input() searchTerm: string;
+  @Input() searchTerm: string;
   products: IProduct[];
   searchterm: string;
   filteredProducts: IProduct[];
@@ -28,24 +28,7 @@ export class ShopComponent implements OnInit {
   product: IProduct;
 
   ngOnInit(): void {
-    // this.loginUser();
     this.initializeProduct();
-    this.addproduct();
-  }
-
-  addproduct() {
-    this.product = {
-      description : 'asdfdaf',
-      image : 'asdfsda',
-      promotion : 0,
-      status : 'asdffas',
-      name: 'dasf',
-      category: 'asdfsa',
-      price: 9999
-    };
-    if (this.authRepo.isLoggedIn()) {
-    this.productRespository.newProduct(this.product);
-    }
   }
 
   SetSearch(value) {

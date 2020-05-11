@@ -52,7 +52,7 @@ export class ProductRespository {
     return this.productservice.saveProduct(product)
     .subscribe(
       p => {
-        console.log(p);
+        console.log(JSON.stringify(p));
         // this.products.push(p);
       },
       err => console.log(`repository erro ${ JSON.stringify(err) }`),

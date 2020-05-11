@@ -32,13 +32,11 @@ export class productService {
   }
 
   saveProduct(product: IProduct): Observable<IProduct> {
-    return this.http.post<IProduct>(`${ this.rootUrl }products/new`, product, httpOptions );
-    // .map((res: any) => res)
-    // .catch((error: any) => Observable.throwError(error.json().error || 'Server error'));
+    return this.http.post<IProduct>(`${ this.rootUrl }products/new`, JSON.stringify(product), httpOptions );
   }
 
   updateProduct(product: IProduct): Observable<IProduct> {
-    return this.http.post<IProduct>(`${ this.rootUrl }/products/edit/${ product.id }`, product, httpOptions );
+    return this.http.post<IProduct>(`${ this.rootUrl }/products/edit/${ product.id }`, JSON.stringify(product), httpOptions );
   }
 
   deleteProduct(id: string, httpOptionss?: any): Observable<IProduct> {

@@ -1,4 +1,4 @@
 export const environment = {
-  // rootUrl : 'http//:localhost:3000/',
+  rootUrl : 'https://sameh-shop.herokuapp.com/',
   production: true
 };

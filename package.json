@@ -27,6 +27,7 @@
     "@angular/compiler-cli": "~9.1.1",
     "@angular/language-service": "~9.1.1",
     "@nguniversal/express-engine": "^9.1.0",
+    "@angular-devkit/build-angular": "~0.901.1",
     "bootstrap": "^4.4.1",
     "environments": "^1.2.2",
     "express-serve-static-core": "^0.1.1",
@@ -40,7 +41,6 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",

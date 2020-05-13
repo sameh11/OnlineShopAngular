@@ -1,0 +1,15 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+}
+
+.totalinput
+{
+   width: 50px;
+   font-weight: 900;
+   font-size: 18px;
+   text-align: center;
+   color: red;
+}

@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { IProduct } from '../models';
+<<<<<<< HEAD
 import { Observable } from 'rxjs';
+=======
+import { Observable, Subject } from 'rxjs';
+>>>>>>> Add To Cart Done
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -18,15 +22,37 @@ const httpOptions = {
 @Injectable()
 // tslint:disable-next-line:class-name
 export class productService {
+<<<<<<< HEAD
   private rootUrl;
   products: IProduct[];
 
+=======
+
+  private rootUrl;
+  products: IProduct[];
+
+// tslint:disable-next-line: ban-types
+
+private Products: IProduct[] = [];
+
+addproduct(product: IProduct)
+{
+  this.Products.push(product);
+  sessionStorage.setItem('MyProduct', JSON.stringify(this.Products));
+}
+
+>>>>>>> Add To Cart Done
   constructor(private http: HttpClient) {
     this.rootUrl = environment.rootUrl;
     this.products = [];
     this.getAllProducts();
   }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Add To Cart Done
   getAllProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${ this.rootUrl }products`);
   }

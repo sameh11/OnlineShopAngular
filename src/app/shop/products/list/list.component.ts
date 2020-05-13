@@ -2,6 +2,10 @@ import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { Component, OnInit, OnDestroy, Input, ViewChild } from '@angular/core';
 import { ProductRespository } from '../../../data/repositories/product.respository';
 import { IProduct } from '../../../data/models';
+<<<<<<< HEAD
+=======
+import { productService } from 'src/app/data/providers/product.service';
+>>>>>>> Add To Cart Done
 
 /// TODO refactor login and registration
 
@@ -25,7 +29,11 @@ export class ListComponent implements OnInit, OnDestroy {
     this.productsPaginated;
   }
 
+<<<<<<< HEAD
   constructor() {
+=======
+  constructor(private productService: productService) {
+>>>>>>> Add To Cart Done
   }
 
   get productsPaginated(): IProduct[] {
@@ -67,6 +75,13 @@ export class ListComponent implements OnInit, OnDestroy {
     this.hidden = false;
   }
 
+<<<<<<< HEAD
+=======
+  AddToCart(item){
+    this.productService.addproduct(item);
+  }
+
+>>>>>>> Add To Cart Done
   // getProductList() {
   //   return this.Respository.getProducts();
   // }

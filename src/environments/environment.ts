@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  // rootUrl : 'https://sameh-shop.herokuapp.com/',
-  rootUrl : 'http://localhost:3000/',
+  rootUrl : 'https://sameh-shop.herokuapp.com/',
+  // rootUrl : 'http://localhost:3000/',
   production : false
 };
 

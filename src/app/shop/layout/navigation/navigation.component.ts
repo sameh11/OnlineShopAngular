@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../../data/providers/user.service';
 import { AuthRepository } from '../../../data/repositories/auth.repository';
 
 @Component({
@@ -10,10 +11,13 @@ import { AuthRepository } from '../../../data/repositories/auth.repository';
 export class NavigationComponent implements OnInit {
   currentUser;
 
-  constructor(private authRepository: AuthRepository,
+  constructor(private userService: UserService,
+              private authRepository: AuthRepository,
               private router: Router) {
-    this.currentUser = authRepository.isLoggedIn();
+    this.currentUser = userService.currentUser;
+    console.log( userService.currentUser);
     if (this.currentUser){
+      console.log(this.currentUser);
     }
   }
 

@@ -49,10 +49,7 @@ export class UserService {
   }
 
   register(form: any): Observable<IAuth> {
-<<<<<<< HEAD
-=======
     console.log('from reg service');
->>>>>>> Add To Cart Done
     return this.http.post<IAuth>(`${ this.rootUrl }users/auth/register`, form);
     // .map((response: Response) => response.json());
   }

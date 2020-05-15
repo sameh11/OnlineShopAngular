@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 // app.use("/api", router);
 app.use(history());
 app.use("/", express.static("./dist/Ang"));
-app.listen(8080,
+app.listen(process.env.PORT || 8080,
   () => console.log("HTTP Server running on port 8080 at http://localhost:8080"));
 if (enableHttps) {
   https.createServer(ssloptions, app).listen(443,
